@@ -7,7 +7,7 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 dotnet restore
 dotnet ef migrations add initialCreate
-donte ef database update
+dontet ef database update
 ```
 
 After that will be created a database, execute ```dotnet run``` command in the root project
