@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FilmesCRUDRazor.Models;
 
-namespace FilmesCRUDRazor.Pages.Filmes
+namespace FilmesCRUDRazor.Pages.Movies
 {
     public class CreateModel : PageModel
     {
-        private readonly FilmesCRUDRazor.Models.FilmeContext _context;
+        private readonly FilmesCRUDRazor.Models.MovieContext _context;
 
-        public CreateModel(FilmesCRUDRazor.Models.FilmeContext context)
+        public CreateModel(FilmesCRUDRazor.Models.MovieContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace FilmesCRUDRazor.Pages.Filmes
         }
 
         [BindProperty]
-        public Filme Filme { get; set; }
+        public Movie Movie { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -34,7 +34,7 @@ namespace FilmesCRUDRazor.Pages.Filmes
                 return Page();
             }
 
-            _context.Filme.Add(Filme);
+            _context.Movie.Add(Movie);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

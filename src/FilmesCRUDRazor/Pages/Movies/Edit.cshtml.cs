@@ -8,19 +8,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FilmesCRUDRazor.Models;
 
-namespace FilmesCRUDRazor.Pages.Filmes
+namespace FilmesCRUDRazor.Pages.Movies
 {
     public class EditModel : PageModel
     {
-        private readonly FilmesCRUDRazor.Models.FilmeContext _context;
+        private readonly FilmesCRUDRazor.Models.MovieContext _context;
 
-        public EditModel(FilmesCRUDRazor.Models.FilmeContext context)
+        public EditModel(FilmesCRUDRazor.Models.MovieContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Filme Filme { get; set; }
+        public Movie Movie { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +29,9 @@ namespace FilmesCRUDRazor.Pages.Filmes
                 return NotFound();
             }
 
-            Filme = await _context.Filme.FirstOrDefaultAsync(m => m.FilmeID == id);
+            Movie = await _context.Movie.FirstOrDefaultAsync(m => m.MovieID == id);
 
-            if (Filme == null)
+            if (Movie == null)
             {
                 return NotFound();
             }
@@ -47,7 +47,7 @@ namespace FilmesCRUDRazor.Pages.Filmes
                 return Page();
             }
 
-            _context.Attach(Filme).State = EntityState.Modified;
+            _context.Attach(Movie).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +55,7 @@ namespace FilmesCRUDRazor.Pages.Filmes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FilmeExists(Filme.FilmeID))
+                if (!MovieExists(Movie.MovieID))
                 {
                     return NotFound();
                 }
@@ -68,9 +68,9 @@ namespace FilmesCRUDRazor.Pages.Filmes
             return RedirectToPage("./Index");
         }
 
-        private bool FilmeExists(int id)
+        private bool MovieExists(int id)
         {
-            return _context.Filme.Any(e => e.FilmeID == id);
+            return _context.Movie.Any(e => e.MovieID == id);
         }
     }
 }

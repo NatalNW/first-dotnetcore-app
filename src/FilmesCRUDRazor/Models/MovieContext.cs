@@ -8,6 +8,6 @@ namespace FilmesCRUDRazor.Models
             //Default
         }
 
-        public DbSet<Movie> Filme { get; set; }
+        public DbSet<Movie> Movie { get; set; }
     }
 }

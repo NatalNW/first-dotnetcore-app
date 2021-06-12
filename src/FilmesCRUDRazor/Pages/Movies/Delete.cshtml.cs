@@ -7,19 +7,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FilmesCRUDRazor.Models;
 
-namespace FilmesCRUDRazor.Pages.Filmes
+namespace FilmesCRUDRazor.Pages.Movies
 {
     public class DeleteModel : PageModel
     {
-        private readonly FilmesCRUDRazor.Models.FilmeContext _context;
+        private readonly FilmesCRUDRazor.Models.MovieContext _context;
 
-        public DeleteModel(FilmesCRUDRazor.Models.FilmeContext context)
+        public DeleteModel(FilmesCRUDRazor.Models.MovieContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Filme Filme { get; set; }
+        public Movie Movie { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +28,9 @@ namespace FilmesCRUDRazor.Pages.Filmes
                 return NotFound();
             }
 
-            Filme = await _context.Filme.FirstOrDefaultAsync(m => m.FilmeID == id);
+            Movie = await _context.Movie.FirstOrDefaultAsync(m => m.MovieID == id);
 
-            if (Filme == null)
+            if (Movie == null)
             {
                 return NotFound();
             }
@@ -44,11 +44,11 @@ namespace FilmesCRUDRazor.Pages.Filmes
                 return NotFound();
             }
 
-            Filme = await _context.Filme.FindAsync(id);
+            Movie = await _context.Movie.FindAsync(id);
 
-            if (Filme != null)
+            if (Movie != null)
             {
-                _context.Filme.Remove(Filme);
+                _context.Movie.Remove(Movie);
                 await _context.SaveChangesAsync();
             }
 

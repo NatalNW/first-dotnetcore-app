@@ -7,18 +7,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FilmesCRUDRazor.Models;
 
-namespace FilmesCRUDRazor.Pages.Filmes
+namespace FilmesCRUDRazor.Pages.Movies
 {
     public class DetailsModel : PageModel
     {
-        private readonly FilmesCRUDRazor.Models.FilmeContext _context;
+        private readonly FilmesCRUDRazor.Models.MovieContext _context;
 
-        public DetailsModel(FilmesCRUDRazor.Models.FilmeContext context)
+        public DetailsModel(FilmesCRUDRazor.Models.MovieContext context)
         {
             _context = context;
         }
 
-        public Filme Filme { get; set; }
+        public Movie Movie { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,9 +27,9 @@ namespace FilmesCRUDRazor.Pages.Filmes
                 return NotFound();
             }
 
-            Filme = await _context.Filme.FirstOrDefaultAsync(m => m.FilmeID == id);
+            Movie = await _context.Movie.FirstOrDefaultAsync(m => m.MovieID == id);
 
-            if (Filme == null)
+            if (Movie == null)
             {
                 return NotFound();
             }

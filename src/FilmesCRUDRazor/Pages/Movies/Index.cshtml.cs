@@ -7,22 +7,22 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FilmesCRUDRazor.Models;
 
-namespace FilmesCRUDRazor.Pages.Filmes
+namespace FilmesCRUDRazor.Pages.Movies
 {
     public class IndexModel : PageModel
     {
-        private readonly FilmesCRUDRazor.Models.FilmeContext _context;
+        private readonly FilmesCRUDRazor.Models.MovieContext _context;
 
-        public IndexModel(FilmesCRUDRazor.Models.FilmeContext context)
+        public IndexModel(FilmesCRUDRazor.Models.MovieContext context)
         {
             _context = context;
         }
 
-        public IList<Filme> Filme { get;set; }
+        public IList<Movie> Movie { get;set; }
 
         public async Task OnGetAsync()
         {
-            Filme = await _context.Filme.ToListAsync();
+            Movie = await _context.Movie.ToListAsync();
         }
     }
 }
