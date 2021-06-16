@@ -5,15 +5,40 @@
     ViewData["Title"] = "Index";
 }
 
+@{
+    Layout = "_Layout";
+}
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
-            <p>
-                <a class="btn btn-primary" asp-page="Create">
-                    <span class="material-icons">add_circle_outline</span> New Movie
-                </a>
-            </p>
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="text-label">Genres:</label>
+                        <select class="form-control" asp-for="FilteredByGenre" asp-items="Model.Genres">
+                            <option value="">All Genres</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="text-left">Movie Title</label>
+                        <input type="text" class="form-control" name="SearchByTitle">
+                        <br />
+                        <p>
+                            <button type="submit" class="btn btn-primary">
+                                    <span class="material-icons">search</span> Search
+                            </button>
+                            <a class="btn btn-primary" asp-page="Create">
+                                <span class="material-icons">add_circle_outline</span> New Movie
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+            <br />
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -63,11 +88,13 @@
                 </table>
                 <nav aria-label="Search movies">
                     <ul class="pagination justify-content-end">
-                        <li class="page-item disabled"><a href="#" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                        <li class="page-item disabled"><a href="#" class="page-link" aria-label="Previous"><span
+                                    aria-hidden="true">&laquo;</span></a></li>
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a href="#" class="page-link">2</a></li>
                         <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                        <li class="page-item"><a href="#" class="page-link" aria-label="Next"><span
+                                    aria-hidden="true">&raquo;</span></a></li>
                     </ul>
                 </nav>
             </div>
